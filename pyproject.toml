@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "poet"
+version = "0.1.0"
+description = "A toy project to demonstrate how to use questionary"
+authors = ["le_woudar <rollandkev@yahoo.fr>"]
+readme = "README.md"
+keywords = ["cli", "prompt", "command line interface"]
+packages = [
+    { include = "poet" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+questionary = "^2.0.1"
+click = "^8.1.7"
+tomlkit = "^0.12.3"
+email-validator = "^2.1.0.post1"
+httpx = "^0.26.0"
+
+
+[tool.poetry.group.lint.dependencies]
+ruff = "^0.1.12"
+
+[tool.poetry.scripts]
+poet = "poet.main:cli"
+
+[tool.ruff]
+line-length = 120
+target-version = "py38"
+
+[tool.ruff.lint]
+extend-select = [
+  "UP",  # pyupgrade
+  "I",   # isort
+  "S",   # flake8-bandit
+  "B",   # flake8-bugbear
+  "C90", # McCabe complexity
+  "RUF"
+]
+ignore = ["S603"]
+
+[tool.ruff.format]
+quote-style = "single"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
